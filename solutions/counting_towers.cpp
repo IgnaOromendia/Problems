@@ -16,56 +16,45 @@ typedef pair<double,double> pd;
 #define forn(i,from,to) for (int i = from; i < to; i++)
 
 constexpr int INF  = 1e9;
-constexpr int MAXN = 1e7 + 1;
+constexpr int MAXN = 1e6;
 constexpr int mod  = 1e9 + 7;
 constexpr double PI = 3.14159265359;
 
-ll memo_sin_huecos[MAXN];
-ll memo_con_huecos[MAXN];
+ll memo[MAXN][2];
+int visited[MAXN][2]; // No hace falta reiniciar el visited ya que siempre es el mismo problema pero más alto
+ 
+// Basicamente vemos cuantas formas tenemos de ir de un 
+// casillero dividido en 2 a otro dividido en 2 + ir a uno entero y viceversa
+// state = 0 -> entero 
+// state = 1 -> dividido
+ll amount_of_ways(int i, int state) {
+    if (i == 1) return 1;
 
-ll con_huecos(int i);
+    if (visited[i][state]) return memo[i][state];
+    visited[i][state] = true;
 
-// Voy a pensar que podemos rellenar la torre de altura i dejando huecos o no
+    // Entero puedo llegar de 2 formas desde un entero o de 1 forma desde un dividido
+    // Dividido puedo llegar de 1 forma desde un enetero o de 4 formas desde un dividio
 
-// Rellenar una torre de alutra i sin dejar huecos
-ll sin_huecos(int i) {
-    // Ponemos bloque 1x2
-    if (i == 1) return 1; 
-    if (i <= 0) return 0;
+    ll prev_entire  = (state == 0 ? 2 : 1) * amount_of_ways(i-1, 0);
+    ll prev_divided = (state == 1 ? 4 : 1) * amount_of_ways(i-1, 1);
 
-    if (memo_sin_huecos[i] != -1) return memo_sin_huecos[i];
-
-    // Ponemos un 1x2 o un 2x2
-    ll result = (sin_huecos(i-1) + sin_huecos(i-2)) % mod;
-
-    // Ponemos un 2x1 (vertical)
-    result = (result + 2 * con_huecos(i-1)) % mod;
-
-    return memo_sin_huecos[i] = result;
-}
-
-// Rellenar una torre de altura i dejando un hueco
-ll con_huecos(int i) {
-    if(i <= 0) return 0;
-
-    if (memo_con_huecos[i] != -1) return memo_con_huecos[i];
-
-    // Ponemos un 1x2 y...
-    return memo_con_huecos[i] = (sin_huecos(i-1) + con_huecos(i-1)) % mod;
+    return memo[i][state] = (prev_entire + prev_divided) % mod;
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(NULL);
-
+ 
     int n,t; cin >> t;
-
-    fill(memo_sin_huecos, memo_sin_huecos + MAXN, -1);
-    fill(memo_con_huecos, memo_con_huecos + MAXN, -1);
-
+ 
+    memset(visited, 0, sizeof(visited));
+ 
     while (t--) {
         cin >> n;
-        cout << sin_huecos(n) << "\n";
+        ll res = amount_of_ways(n, 0) + amount_of_ways(n, 1);
+        res %= mod;
+        cout << res << "\n";
     }
     
 }
