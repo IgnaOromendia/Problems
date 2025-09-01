@@ -20,10 +20,10 @@ typedef pair<double,double> pd;
 #define rforn(i, from, to) for (int i = from; i >= to; i--)
 
 // Bitset
-#define contains(set, x) (set & (1 << x))
-#define add(set, x) (set |= (1 << x))
-#define size(set) __builtin_popcount(set)
-#define remove(set, x) (set &= ~(1 << x))
+#define set_contains(set, x) (set & (1 << x))
+#define set_add(set, x) (set |= (1 << x))
+#define set_size(set) __builtin_popcount(set)
+#define set_remove(set, x) (set &= ~(1 << x))
 
 constexpr int INF  = 1e9;
 constexpr int MAXN = 0;
