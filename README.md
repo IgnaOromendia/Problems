@@ -6,7 +6,7 @@
 - [UVA 1098 - Robots on Ice](./solutions/robots_on_ice.cpp)
 - [476B - Dreamoon and Wifi](./solutions/dreamoon.cpp)
 - [?O - The number of paths in grid](./solutions/number_of_paths.cpp)
-
+- [727A - Transformation: from A to B](./solutions/transformationAB.cpp)
 
 ### Dynamic Programming
 - [CSES - Dice Combinations](./solutions/dice_comb.cpp)
@@ -44,6 +44,9 @@
 - [UVA 11284 - Shopping Trip](./solutions/shopping_trip.cpp)
 - [UVA 1096 - The Islands](./solutions/theislands.cpp) TERMINAR
 - [UVA 1231 - ACORN](./solutions/acorn.cpp)
+- [706C - Hard Problem](./solutions/hardproblem.cpp)
+- [1132F - Clear The String](./solutions/clearstring.cpp)
+- [999F - Cards And Joy](./solutions/cardsjoy.cpp)
 
 ### Greedy
 - [POJ 1852 - Ants](./solutions/ants.cpp)
@@ -152,7 +155,6 @@
 - [CSES - Dynamic Range Sum Queries](./solutions/dynamic_range_sum.cpp)
 - [CSES - Dynamic Range Min QUeries](./solutions/dynamic_range_min.cpp)
 
-
 ### Divide & Conquer
 - [SPOJ AGGRESSIVE_COWS](./solutions/aggressive_cows.cpp)
 - [476B - Worms](./solutions/worms.cpp)
@@ -161,6 +163,7 @@
 - [UVA 11935 - Through the Desert](./solutions/desert.cpp)
 - [UVA 10567 - Helping Fill Bates](./solutions/fillbates.cpp)
 - [UVA 12524 - Arranging Heaps](./solutions/arrheaps.cpp)
+- [1385D - a-Good String](./solutions/agoodstring.cpp)
 
 ### Number Representation
 - [POJ 1504 - Adding Reversed Numbers](./solutions/adding_rev_num.cpp)
